@@ -32,3 +32,7 @@ S/__pycache__/Device_Owner_Tests.cpython-310.pyc
 S/__pycache__/factory_reset.cpython-310.pyc
 S/__pycache__/Setup.cpython-310.pyc
 S/__pycache__/setup.cpython-310.pyc
+R/dump.py
+R/xm.xml
+S/dump.py
+S/xm.xml
