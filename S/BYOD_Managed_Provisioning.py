@@ -224,7 +224,7 @@ def BYOD_Managed_Provisioning(device):
             else:
                 click(d,'t',"FAIL",1) 
 
-            #Open app cross profiles from the personal side
+        #Open app cross profiles from the personal side
         if d(text="Open app cross profiles from the personal side").exists:
             click(d,'t',"Open app cross profiles from the personal side",1)
             click(d,'t',"GO",1)
@@ -789,167 +789,183 @@ def BYOD_Managed_Provisioning(device):
             click(d,'t',"SET DEFAULT MESSAGE",1)
             click(d,'t',"SET MESSAGE",1)
             d.press("back")
+
             #Disallow controlling apps
-            click(d,'t',"Disallow controlling apps",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            click(d,'t',"Work",1)
-            Fail = True
-            click(d,'t',"Contacts",1)
-            click(d,'t',"DISABLE",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail = True                
-            nPress(d,2,"back",1)
-            Fail2 = True
-            Fail3 = True
-            click(d,'t',"Cross Profile Test App",1)
-            click(d,'t',"UNINSTALL",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail2 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail2 = True  
-            d.press("back")
-            click(d,'t',"FORCE STOP",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail3 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail3 = True  
-            nPress(d,3,"back",1)
-            if not Fail and not Fail2 and not Fail3:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Disallow controlling apps").exists:
+                click(d,'t',"Disallow controlling apps",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                click(d,'t',"Work",1)
+                Fail = True
+                click(d,'t',"Contacts",1)
+                click(d,'t',"DISABLE",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail = True                
+                nPress(d,2,"back",1)
+                Fail2 = True
+                Fail3 = True
+                click(d,'t',"Cross Profile Test App",1)
+                click(d,'t',"UNINSTALL",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail2 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail2 = True  
+                d.press("back")
+                click(d,'t',"FORCE STOP",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail3 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail3 = True  
+                nPress(d,3,"back",1)
+                if not Fail and not Fail2 and not Fail3:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+
             #Disallow uninstall apps
-            click(d,'t',"Disallow uninstall apps",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            click(d,'t',"Work",1)
-            Fail4 = True
-            click(d,'t',"Cross Profile Test App",1)
-            click(d,'t',"UNINSTALL",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail4 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail4 = True  
-            nPress(d,3,"back",1)
-            if not Fail4:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Disallow uninstall apps").exists:
+                click(d,'t',"Disallow uninstall apps",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                click(d,'t',"Work",1)
+                Fail4 = True
+                click(d,'t',"Cross Profile Test App",1)
+                click(d,'t',"UNINSTALL",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail4 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail4 = True  
+                nPress(d,3,"back",1)
+                if not Fail4:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+
             #Disallow modify accounts
-            click(d,'t',"Disallow modify accounts",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            click(d,'t',"Work",1)
-            Fail5 = True
-            click(d,'t',"Add account",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail5 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail5 = True  
-            nPress(d,2,"back",1)
-            if not Fail5:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Disallow modify accounts").exists:
+                click(d,'t',"Disallow modify accounts",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                click(d,'t',"Work",1)
+                Fail5 = True
+                click(d,'t',"Add account",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail5 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail5 = True  
+                nPress(d,2,"back",1)
+                if not Fail5:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+
             #Disallow share location
-            click(d,'t',"Disallow share location",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            Fail6 = True
-            click(d,'t',"Location for work profile",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail6 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail6 = True  
-            nPress(d,2,"back",1)
-            if not Fail6:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Disallow share location").exists:
+                click(d,'t',"Disallow share location",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                Fail6 = True
+                click(d,'t',"Location for work profile",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail6 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail6 = True  
+                nPress(d,2,"back",1)
+                if not Fail6:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+
             #Disallow unified challenge
-            click(d,'t',"Disallow unified challenge",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            d(className="androidx.recyclerview.widget.RecyclerView").scroll.to(text="Use one lock")
-            Fail7 = True
-            click(d,'t',"Use one lock",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail7 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail7 = True  
-            nPress(d,2,"back",1)
-            if not Fail7:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Disallow unified challenge").exists:
+                click(d,'t',"Disallow unified challenge",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                d(className="androidx.recyclerview.widget.RecyclerView").scroll.to(text="Use one lock")
+                Fail7 = True
+                click(d,'t',"Use one lock",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail7 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail7 = True  
+                nPress(d,2,"back",1)
+                if not Fail7:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+
             #Disallow config location
-            click(d,'t',"Disallow config location",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            Fail8 = True
-            click(d,'t',"Location for work profile",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail8 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail8 = True  
-            nPress(d,2,"back",1)
-            if not Fail8:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Disallow config location").exists:
+                click(d,'t',"Disallow config location",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                Fail8 = True
+                click(d,'t',"Location for work profile",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail8 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail8 = True  
+                nPress(d,2,"back",1)
+                if not Fail8:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+
             #Set permitted accessibility services
-            click(d,'t',"Set permitted accessibility services",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            Fail9 = True
-            click(d,'t',"Test accessibility service",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail9 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail9 = True  
-            nPress(d,2,"back",1)
-            if not Fail9:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Set permitted accessibility services").exists:
+                click(d,'t',"Set permitted accessibility services",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                Fail9 = True
+                click(d,'t',"Test accessibility service",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail9 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail9 = True  
+                nPress(d,2,"back",1)
+                if not Fail9:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+
             #Set permitted input methods
-            click(d,'t',"Set permitted input methods",1)
-            click(d,'c',"android.widget.Switch",1)
-            click(d,'t',"OPEN SETTINGS",1)
-            d(className="android.widget.ScrollView").scroll.to(text="System")
-            click(d,'t',"System",1)
-            click(d,'t',"Languages & input",1)
-            d(className="androidx.recyclerview.widget.RecyclerView").scroll.to(text="On-screen keyboard for work")
-            click(d,'t',"On-screen keyboard for work",1)
-            click(d,'t',"Manage on-screen keyboards",1)
-            Fail0 = True
-            click(d,'t',"Test input method",1)
-            if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
-                Fail0 = False
-                click(d,'t',"LEARN MORE",1)
-                if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
-                    Fail0 = True  
-            nPress(d,6,"back",1)
-            if not Fail0:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
-            if not Fail and not Fail2 and not Fail3 and not Fail4 and not Fail5 and not Fail6 and not Fail7 and not Fail8 and not Fail9 and not Fail0:
-                click(d,'r',"com.android.cts.verifier:id/pass_button",1)
-            else:
-                click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+            if d(text="Set permitted input methods").exists:
+                click(d,'t',"Set permitted input methods",1)
+                click(d,'c',"android.widget.Switch",1)
+                click(d,'t',"OPEN SETTINGS",1)
+                d(className="android.widget.ScrollView").scroll.to(text="System")
+                click(d,'t',"System",1)
+                click(d,'t',"Languages & input",1)
+                d(className="androidx.recyclerview.widget.RecyclerView").scroll.to(text="On-screen keyboard for work")
+                click(d,'t',"On-screen keyboard for work",1)
+                click(d,'t',"Manage on-screen keyboards",1)
+                Fail0 = True
+                click(d,'t',"Test input method",1)
+                if d(text="This action is disabled by your administrator. Contact someone@example.com for support.").exists:
+                    Fail0 = False
+                    click(d,'t',"LEARN MORE",1)
+                    if not d(text="Your admin can monitor and manage apps and data associated with your work profile, including settings, permissions, corporate access, network activity, and the device's location information.").exists:
+                        Fail0 = True  
+                nPress(d,6,"back",1)
+                if not Fail0:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
+                if not Fail and not Fail2 and not Fail3 and not Fail4 and not Fail5 and not Fail6 and not Fail7 and not Fail8 and not Fail9 and not Fail0:
+                    click(d,'r',"com.android.cts.verifier:id/pass_button",1)
+                else:
+                    click(d,'r',"com.android.cts.verifier:id/fail_button",1)
 
 
         d.swipe(540,2000,540,1600,steps=10)
@@ -1090,7 +1106,7 @@ def BYOD_Managed_Provisioning(device):
                 click(d,'r',"com.android.cts.verifier:id/pass_button",1)
             else:
                 click(d,'r',"com.android.cts.verifier:id/fail_button",1)
-        
+            
         d.swipe(540,2000,540,1600,steps=10)
         time.sleep(1)
 
@@ -1119,8 +1135,6 @@ def BYOD_Managed_Provisioning(device):
                 click(d,'r',"com.android.cts.verifier:id/pass_button",1)
             else:
                 click(d,'r',"com.android.cts.verifier:id/fail_button",1)
-            
-
 
         #Uninstall work app from launcher
         if d(text="Uninstall work app from launcher").exists:
@@ -1145,14 +1159,13 @@ def BYOD_Managed_Provisioning(device):
                 click(d,'t',"PASS",1)
             else:
                 click(d,'t',"FAIL",1)
-
-        runCmd(device,"adb -s %s shell am start -a android.settings.SETTINGS" ,1)
-        d(resourceId="com.android.settings:id/main_content_scrollable_container").scroll.to(text="Security")
-        click(d,'t',"Security",1)
-        click(d,'t',"Screen lock",1)
-        d(resourceId="com.android.settings:id/password_entry").set_text("0000")
-        d.press("enter")
-        click(d,'t',"None",1)
-        click(d,'t',"DELETE",1)
-        nPress(d,2,"recent",1)
-        d.press("back")
+            runCmd(device,"adb -s %s shell am start -a android.settings.SETTINGS" ,1)
+            d(resourceId="com.android.settings:id/main_content_scrollable_container").scroll.to(text="Security")
+            click(d,'t',"Security",1)
+            click(d,'t',"Screen lock",1)
+            d(resourceId="com.android.settings:id/password_entry").set_text("0000")
+            d.press("enter")
+            click(d,'t',"None",1)
+            click(d,'t',"DELETE",1)
+            nPress(d,2,"recent",1)
+            d.press("back") 
