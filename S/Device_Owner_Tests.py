@@ -1,4 +1,3 @@
-import resource
 from uiautomator import Device
 import os
 import time
