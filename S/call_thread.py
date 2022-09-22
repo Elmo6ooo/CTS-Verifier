@@ -88,3 +88,6 @@ print("complete")
 #if can't open power menu skip LockTask UI
 #Setting user icon use screenshot remember to check photo
 #Skip Disallow debugging features, this will close debugging
+#Skip User switcher message
+#Skip Logout long press power not working
+#Skip Disable USB data signaling, this will close debugging
