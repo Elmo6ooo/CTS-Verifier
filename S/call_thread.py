@@ -1,13 +1,13 @@
+from Setup import Setup
 from BYOD_Managed_Provisioning import BYOD_Managed_Provisioning
 from BYOD_Provisioning_tests import BYOD_Provisioning_tests
 from Device_Owner_Requesting_Bugreport_Tests import Device_Owner_Requesting_Bugreport_Tests
 from Device_Owner_Tests import Device_Owner_Tests
-from Setup import Setup
+from No_Device_Owner_Tests import No_Device_Owner_Tests
 import threading
 import time
 
 Devices = ['09221FQCB00033','0A261FDD4000JM']
-#Devices = ['0A201FQCB00112']
 
 #SETUP DEVICE
 threads = []
@@ -59,10 +59,20 @@ for i in range(len(Devices)):
 
 time.sleep(1)
 
-#Device_Owner_Requesting_Bugreport_Tests
+#Device_Owner_Tests
 threads4 = []
 for device in Devices:
 	t = threading.Thread(target =Device_Owner_Tests , args = (device,))
+	threads4.append(t)
+for i in range(len(Devices)):
+	threads4[i].start()
+for i in range(len(Devices)):
+	threads4[i].join()
+
+#No_Device_Owner_Tests
+threads4 = []
+for device in Devices:
+	t = threading.Thread(target =No_Device_Owner_Tests , args = (device,))
 	threads4.append(t)
 for i in range(len(Devices)):
 	threads4[i].start()
